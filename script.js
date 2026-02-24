@@ -34,11 +34,11 @@ console.log(currentStatus)
 selected.classList.remove('bg-gray-300','text-black')
 selected.classList.add('bg-blue-800','text-white')
 
-// if(id== 'interviewing-filter-btn'){
-//     allCardSection.classList.add('hidden');
-//     filterSection.classList.remove('hidden');
-//     renderInterviewing()
-// }
+if(id== 'interviewing-filter-btn'){
+     allCardSection.classList.add('hidden');
+    filterSection.classList.remove('hidden');
+    renderInterviewing()
+}
 if(id== 'interviewing-filter-btn'){
     allCardSection.classList.add('hidden');
     filterSection.classList.remove('hidden');
@@ -58,11 +58,7 @@ else if(id == 'all-filter-btn'){
     document.getElementById("jobCount").innerText =
         allCardSection.children.length + " Jobs";
 }
-// else if (id=='rejecting-filter-btn'){
-//     allCardSection.classList.add('hidden');
-//     filterSection.classList.remove('hidden');
-//     renderRejecting()
-// }
+
 else if (id=='rejecting-filter-btn'){
     allCardSection.classList.add('hidden');
     filterSection.classList.remove('hidden');
