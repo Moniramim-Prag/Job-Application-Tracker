@@ -34,11 +34,7 @@ console.log(currentStatus)
 selected.classList.remove('bg-gray-300','text-black')
 selected.classList.add('bg-blue-800','text-white')
 
-if(id== 'interviewing-filter-btn'){
-     allCardSection.classList.add('hidden');
-    filterSection.classList.remove('hidden');
-    renderInterviewing()
-}
+
 if(id== 'interviewing-filter-btn'){
     allCardSection.classList.add('hidden');
     filterSection.classList.remove('hidden');
