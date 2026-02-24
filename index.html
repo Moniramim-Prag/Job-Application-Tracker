@@ -26,7 +26,7 @@
     </div>
 </header>
     <hr class=" w-[80%] mx-auto my-5">
-    <div class="container w-[80%] mx-auto bg-white rounded-2xl">
+    <main class="w-[80%] mx-auto bg-white rounded-2xl">
 
     <div class="header flex justify-between items-center mb-5">
         <h2 id="job-counter" class="text-4xl font-bold">Available Jobs</h2>
@@ -34,137 +34,141 @@
     </div>
 
     <div class="tabs flex gap-3 mb-5">
-        <button >All</button>
-        <button >Interview</button>
-        <button >Rejected</button>
+        <button onclick="toggleStyle('all-filter-btn')" class="bg-blue-800 text-white px-5 py-2" id="all-filter-btn">All</button>
+        <button onclick="toggleStyle('interviewing-filter-btn')" class="bg-gray-300 px-5 py-2" id="interviewing-filter-btn" >Interview</button>
+        <button onclick="toggleStyle('rejecting-filter-btn')" class="bg-gray-300 px-5 py-2" id="rejecting-filter-btn">Rejected</button>
     </div>
-    <div id="jobList" class="space-y-5">
+    <!--Filtered Section--->
+    <section id="filtered-section" class="hidden"></section>
+
+
+    <div id="allCards" class="space-y-5">
 
         <!-- 8 JOB CARDS -->
 
-        <div class="job-card border space-y-3 relative p-3" data-status="not-applied">
+        <div class="job-card border space-y-3 relative p-3" >
             <div class="delete-btn absolute right-2.5 top-2.5 cursor-pointer text-[16px]" onclick="deleteCard(this)"><i class="fa-solid fa-trash-can" style="color: rgb(177, 151, 252);"></i></div>
             <div class="company text-3xl font-bold ">Mobile First Corp</div>
             <div class="role">React Native Developer</div>
             <div class="details">Remote • Full-time • $130k - $175k</div>
-             <span class="status not-applied bg-slate-300 rounded-2xl p-2">NOT APPLIED</span>
-             <div>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</div>
+             <span class="status bg-slate-300 rounded-2xl p-2">NOT APPLIED</span>
+             <div class="notes" >Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</div>
             <br>
             <div>
-                <button class="border-green-600 border bg-amber-50 p-2 text-green-500 font-bold cursor-pointer">Interview</button>
-                <button class="border-red-400 border bg-amber-50 p-2 text-red-500 font-bold cursor-pointer">Rejected</button>
+                <button class="interviewing-btn border-green-600 border bg-amber-50 p-2 text-green-500 font-bold cursor-pointer">Interview</button>
+                <button class="rejecting-btn border-red-400 border bg-amber-50 p-2 text-red-500 font-bold cursor-pointer">Rejected</button>
             </div> 
         </div>
 
-        <div class="job-card border space-y-3 relative p-3" data-status="interview">
+        <div class="job-card border space-y-3 relative p-3">
             <div class="delete-btn absolute right-2.5 top-2.5 cursor-pointer text-[16px]" onclick="deleteCard(this)"><i class="fa-solid fa-trash-can" style="color: rgb(177, 151, 252);"></i></div>
             <div class="company text-3xl font-bold">WebFlow Agency</div>
             <div class="role">Web Designer & Developer</div>
             <div class="details">Los Angeles • Part-time • $80k - $120k</div>
-             <span class="status not-applied bg-slate-300 rounded-2xl p-2">NOT APPLIED</span>
-             <div>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</div>
+             <span class="status bg-slate-300 rounded-2xl p-2">NOT APPLIED</span>
+             <div class="notes" >Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</div>
             <br>
             <div>
-                <button class="border-green-600 border bg-amber-50 p-2 text-green-500 font-bold cursor-pointer">Interview</button>
-                <button class="border-red-400 border bg-amber-50 p-2 text-red-500 font-bold cursor-pointer">Rejected</button>
+                <button class="interviewing-btn border-green-600 border bg-amber-50 p-2 text-green-500 font-bold cursor-pointer">Interview</button>
+                <button class="rejecting-btn border-red-400 border bg-amber-50 p-2 text-red-500 font-bold cursor-pointer">Rejected</button>
             </div>
            
         </div>
 
-        <div class="job-card border space-y-3 relative p-3" data-status="rejected">
+        <div class="job-card border space-y-3 relative p-3">
             <div class="delete-btn absolute right-2.5 top-2.5 cursor-pointer text-[16px]" onclick="deleteCard(this)"><i class="fa-solid fa-trash-can" style="color: rgb(177, 151, 252);"></i></div>
             <div class="company text-3xl font-bold">DataViz Solutions</div>
             <div class="role">Data Visualization Specialist</div>
             <div class="details">Boston • Full-time • $125k - $165k</div>
-             <span class="status not-applied bg-slate-300 rounded-2xl p-2">NOT APPLIED</span>
-             <div>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</div>
+             <span class="status bg-slate-300 rounded-2xl p-2">NOT APPLIED</span>
+             <div class="notes">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</div>
             <br>
             <div>
-                <button class="border-green-600 border bg-amber-50 p-2 text-green-500 font-bold cursor-pointer" >Interview</button>
-                <button class="border-red-400 border bg-amber-50 p-2 text-red-500 font-bold cursor-pointer">Rejected</button>
+                <button class="interviewing-btn border-green-600 border bg-amber-50 p-2 text-green-500 font-bold cursor-pointer" >Interview</button>
+                <button class="rejecting-btn border-red-400 border bg-amber-50 p-2 text-red-500 font-bold cursor-pointer">Rejected</button>
             </div>
             
         </div>
 
-        <div class="job-card border space-y-3 relative p-3" data-status="not-applied">
+        <div class="job-card border space-y-3 relative p-3">
             <div class="delete-btn absolute right-2.5 top-2.5 cursor-pointer text-[16px]" onclick="deleteCard(this)"><i class="fa-solid fa-trash-can" style="color: rgb(177, 151, 252);"></i></div>
             <div class="company text-3xl font-bold">CloudFirst Inc</div>
             <div class="role">Backend Developer</div>
             <div class="details">Seattle • Full-time • $140k - $190k</div>
-             <span class="status not-applied bg-slate-300 rounded-2xl p-2">NOT APPLIED</span>
-             <div>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</div>
+             <span class="status  bg-slate-300 rounded-2xl p-2">NOT APPLIED</span>
+             <div class="notes">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</div>
             <br>
             <div>
-                <button class="border-green-600 border bg-amber-50 p-2 text-green-500 font-bold cursor-pointer">Interview</button>
-                <button class="border-red-400 border bg-amber-50 p-2 text-red-500 font-bold cursor-pointer">Rejected</button>
+                <button class="interviewing-btn border-green-600 border bg-amber-50 p-2 text-green-500 font-bold cursor-pointer">Interview</button>
+                <button class="rejecting-btn border-red-400 border bg-amber-50 p-2 text-red-500 font-bold cursor-pointer">Rejected</button>
             </div>
             
         </div>
 
-        <div class="job-card border space-y-3 relative p-3" data-status="interview">
+        <div class="job-card border space-y-3 relative p-3">
             <div class="delete-btn absolute right-2.5 top-2.5 cursor-pointer text-[16px]" onclick="deleteCard(this)"><i class="fa-solid fa-trash-can" style="color: rgb(177, 151, 252);"></i></div>
             <div class="company text-3xl font-bold">Innovation Labs</div>
             <div class="role">UI/UX Engineer</div>
             <div class="details">Austin • Full-time • $110k - $150k</div>
-             <span class="status not-applied bg-slate-300 rounded-2xl p-2">NOT APPLIED</span>
-             <div>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</div>
+             <span class="status bg-slate-300 rounded-2xl p-2">NOT APPLIED</span>
+             <div class="notes">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</div>
             <br>
             <div>
-                <button class="border-green-600 border bg-amber-50 p-2 text-green-500 font-bold cursor-pointer">Interview</button>
-                <button class="border-red-400 border bg-amber-50 p-2 text-red-500 font-bold cursor-pointer">Rejected</button>
+                <button class="interviewing-btn border-green-600 border bg-amber-50 p-2 text-green-500 font-bold cursor-pointer">Interview</button>
+                <button class="rejecting-btn border-red-400 border bg-amber-50 p-2 text-red-500 font-bold cursor-pointer">Rejected</button>
             </div>
             
         </div>
 
-        <div class="job-card border space-y-3 relative p-3" data-status="rejected">
+        <div class="job-card border space-y-3 relative p-3">
             <div class="delete-btn absolute right-2.5 top-2.5 cursor-pointer text-[16px]" onclick="deleteCard(this)"><i class="fa-solid fa-trash-can" style="color: rgb(177, 151, 252);"></i></div>
             <div class="company text-3xl font-bold">BrightTech</div>
             <div class="role">Frontend Developer</div>
             <div class="details">Chicago • Remote • $95k - $130k</div>
-             <span class="status not-applied bg-slate-300 rounded-2xl p-2">NOT APPLIED</span>
-             <div>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</div>
+             <span class="status bg-slate-300 rounded-2xl p-2">NOT APPLIED</span>
+             <div class="notes">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</div>
             <br>
             <div>
-                <button class="border-green-600 border bg-amber-50 p-2 text-green-500 font-bold cursor-pointer">Interview</button>
-                <button class="border-red-400 border bg-amber-50 p-2 text-red-500 font-bold cursor-pointer">Rejected</button>
+                <button class="interviewing-btn border-green-600 border bg-amber-50 p-2 text-green-500 font-bold cursor-pointer">Interview</button>
+                <button class="rejecting-btn border-red-400 border bg-amber-50 p-2 text-red-500 font-bold cursor-pointer">Rejected</button>
             </div>
             
         </div>
 
-        <div class="job-card border space-y-3 relative p-3 " data-status="not-applied">
+        <div class="job-card border space-y-3 relative p-3 " >
             <div class="delete-btn absolute right-2.5 top-2.5 cursor-pointer text-[16px]" onclick="deleteCard(this)"><i class="fa-solid fa-trash-can" style="color: rgb(177, 151, 252);"></i></div>
             <div class="company text-3xl font-bold">NextGen Systems</div>
             <div class="role">Full Stack Developer</div>
             <div class="details">New York • Full-time • $120k - $160k</div>
-             <span class="status not-applied bg-slate-300 rounded-2xl p-2">NOT APPLIED</span>
-             <div>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</div>
+             <span class="status bg-slate-300 rounded-2xl p-2">NOT APPLIED</span>
+             <div class="notes">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</div>
             <br>
             <div>
-                <button class="border-green-600 border bg-amber-50 p-2 text-green-500 font-bold cursor-pointer">Interview</button>
-                <button class="border-red-400 border bg-amber-50 p-2 text-red-500 font-bold cursor-pointer ">Rejected</button>
+                <button class="interviewing-btn border-green-600 border bg-amber-50 p-2 text-green-500 font-bold cursor-pointer">Interview</button>
+                <button class="rejecting-btn border-red-400 border bg-amber-50 p-2 text-red-500 font-bold cursor-pointer ">Rejected</button>
             </div>
             
         </div>
 
-        <div class="job-card  border space-y-3 relative p-3" data-status="interview">
+        <div class="job-card  border space-y-3 relative p-3" >
             <div class="delete-btn absolute right-2.5 top-2.5 cursor-pointer text-[16px]" onclick="deleteCard(this)"><i class="fa-solid fa-trash-can" style="color: rgb(177, 151, 252);"></i></div>
             <div class="company text-3xl font-bold">SkyNet Digital</div>
             <div class="role">DevOps Engineer</div>
             <div class="details">San Francisco • Full-time • $150k - $200k</div>
-            <span class="status not-applied bg-slate-300 rounded-2xl p-2">NOT APPLIED</span>
-            <div>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</div>
+            <span class="status bg-slate-300 rounded-2xl p-2">NOT APPLIED</span>
+            <div class="notes">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</div>
              
             <br>
             <div>
-                <button class="border-green-600 border bg-amber-50 p-2 text-green-500 font-bold cursor-pointer">Interview</button>
-                <button class="border-red-400 border bg-amber-50 p-2 text-red-500 font-bold cursor-pointer">Rejected</button>
+                <button class="interviewing-btn border-green-600 border bg-amber-50 p-2 text-green-500 font-bold cursor-pointer">Interview</button>
+                <button class="rejecting-btn border-red-400 border bg-amber-50 p-2 text-red-500 font-bold cursor-pointer">Rejected</button>
             </div>
            
         </div>
 
     </div>
 
-</div>
+    </main>
     <script src="./script.js"></script>
 </body>
 </html>
