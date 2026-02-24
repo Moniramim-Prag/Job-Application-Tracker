@@ -34,19 +34,41 @@ console.log(currentStatus)
 selected.classList.remove('bg-gray-300','text-black')
 selected.classList.add('bg-blue-800','text-white')
 
+// if(id== 'interviewing-filter-btn'){
+//     allCardSection.classList.add('hidden');
+//     filterSection.classList.remove('hidden');
+//     renderInterviewing()
+// }
 if(id== 'interviewing-filter-btn'){
     allCardSection.classList.add('hidden');
     filterSection.classList.remove('hidden');
-    renderInterviewing()
+    renderInterviewing();
+
+    document.getElementById("jobCount").innerText = interviewingList.length + " Jobs";
 }
+// else if(id == 'all-filter-btn'){
+//     allCardSection.classList.remove('hidden');
+//     filterSection.classList.add('hidden');
+// }
 else if(id == 'all-filter-btn'){
     allCardSection.classList.remove('hidden');
     filterSection.classList.add('hidden');
+
+    // update available job count for ALL
+    document.getElementById("jobCount").innerText =
+        allCardSection.children.length + " Jobs";
 }
+// else if (id=='rejecting-filter-btn'){
+//     allCardSection.classList.add('hidden');
+//     filterSection.classList.remove('hidden');
+//     renderRejecting()
+// }
 else if (id=='rejecting-filter-btn'){
     allCardSection.classList.add('hidden');
     filterSection.classList.remove('hidden');
-    renderRejecting()
+    renderRejecting();
+
+    document.getElementById("jobCount").innerText = rejectingList.length + " Jobs";
 }
 
 }
@@ -60,7 +82,7 @@ mainContainer.addEventListener('click',function(event){
     const detailsName= parenNode.querySelector('.details').innerText
     const statusName = parenNode.querySelector('.status').innerText
     const notesName = parenNode.querySelector('.notes').innerText
-    parenNode.querySelector('.status').innerText= 'Interview'
+    parenNode.querySelector('.status').innerText= 'Interview';
 
     const cardInfo = {
         companyName,
@@ -80,9 +102,12 @@ mainContainer.addEventListener('click',function(event){
         interviewingList.push(cardInfo)
     }
     rejectingList= rejectingList.filter(item=>item.companyName !=cardInfo.companyName)
+
     calculateCount()
-    if(currentStatus=='rejecting-filter-btn'){
-       renderRejecting()
+    if(currentStatus == 'interviewing-filter-btn'){
+    document.getElementById("jobCount").innerText = interviewingList.length + " Jobs";
+
+    
     }
     
     }
@@ -113,14 +138,22 @@ mainContainer.addEventListener('click',function(event){
         rejectingList.push(cardInfo)
     }
     interviewingList = interviewingList.filter(item=>item.companyName !=cardInfo.companyName)
-    if(currentStatus== "interviewingFilterBtn"){
+    if(currentStatus== "interviewing-filter-btn"){
         renderInterviewing()
     }
         
     calculateCount()
-    // renderRejecting()
-    }
+    if(currentStatus=='rejecting-filter-btn'){
+       renderRejecting()
+
+if(currentStatus == 'rejecting-filter-btn'){
+    document.getElementById("jobCount").innerText = rejectingList.length + " Jobs";
+}
+}
     
+    
+    
+    }
 })
 
 
