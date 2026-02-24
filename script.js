@@ -42,10 +42,10 @@ if(id== 'interviewing-filter-btn'){
 
     document.getElementById("jobCount").innerText = interviewingList.length + " Jobs";
 }
-// else if(id == 'all-filter-btn'){
-//     allCardSection.classList.remove('hidden');
-//     filterSection.classList.add('hidden');
-// }
+else if(id == 'all-filter-btn'){
+    allCardSection.classList.remove('hidden');
+    filterSection.classList.add('hidden');
+}
 else if(id == 'all-filter-btn'){
     allCardSection.classList.remove('hidden');
     filterSection.classList.add('hidden');
