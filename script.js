@@ -123,50 +123,79 @@ mainContainer.addEventListener('click',function(event){
     
 })
 
+
 function renderInterviewing(){
-    filterSection.innerHTML= ''
+
+    filterSection.innerHTML = '';
+
+    if(interviewingList.length === 0){
+        renderEmptyState("No Interview jobs available");
+        return;
+    }
+
     for(let interview of interviewingList){
-       
         let div = document.createElement('div');
-        div.className='job-card border space-y-3 relative p-3'
-        div.innerHTML=`<div class="delete-btn absolute right-2.5 top-2.5 cursor-pointer text-[16px]" onclick="deleteCard(this)"><i class="fa-solid fa-trash-can" style="color: rgb(177, 151, 252);"></i></div>
-            <div class="company text-3xl font-bold ">${interview.companyName}</div>
-            <div class="role">React Native Developer</div>
-            <div class="details">Remote • Full-time • $130k - $175k</div>
-             <span class="status bg-slate-300 rounded-2xl p-2">${interview.statusName}</span>
-             <div class="notes" >Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</div>
-            <br>
+        div.className='job-card border space-y-3 relative p-3';
+
+        div.innerHTML = `
+        <div class="company text-3xl font-bold">${interview.companyName}</div>
+        <div class="role">${interview.roleName}</div>
+        <div class="details">${interview.detailsName}</div>
+        <span class="status bg-green-100 rounded-2xl p-2">${interview.statusName}</span>
+        <div class="notes">${interview.notesName}</div>
+        <br>
             <div>
                 <button class="interviewing-btn border-green-600 border bg-amber-50 p-2 text-green-500 font-bold cursor-pointer">Interview</button>
                 <button class="rejecting-btn border-red-400 border bg-amber-50 p-2 text-red-500 font-bold cursor-pointer">Rejected</button>
-            </div> 
-        </div>
-        `
-        filterSection.appendChild(div)
+            </div>
+        `;
+
+        filterSection.appendChild(div);
     }
 }
+
 function renderRejecting(){
-    filterSection.innerHTML= ''
+
+    filterSection.innerHTML = '';
+
+    if(rejectingList.length === 0){
+        renderEmptyState("No Rejected jobs available");
+        return;
+    }
+
     for(let reject of rejectingList){
-       
         let div = document.createElement('div');
-        div.className='job-card border space-y-3 relative p-3'
-        div.innerHTML=`<div class="delete-btn absolute right-2.5 top-2.5 cursor-pointer text-[16px]" onclick="deleteCard(this)"><i class="fa-solid fa-trash-can" style="color: rgb(177, 151, 252);"></i></div>
-            <div class="company text-3xl font-bold ">${reject.companyName}</div>
-            <div class="role">React Native Developer</div>
-            <div class="details">Remote • Full-time • $130k - $175k</div>
-             <span class="status bg-slate-300 rounded-2xl p-2">${reject.statusName}</span>
-             <div class="notes" >Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</div>
-            <br>
+        div.className='job-card border space-y-3 relative p-3';
+
+        div.innerHTML = `
+        <div class="company text-3xl font-bold">${reject.companyName}</div>
+        <div class="role">${reject.roleName}</div>
+        <div class="details">${reject.detailsName}</div>
+        <span class="status bg-red-100 rounded-2xl p-2">${reject.statusName}</span>
+        <div class="notes">${reject.notesName}</div>
+        <br>
             <div>
                 <button class="interviewing-btn border-green-600 border bg-amber-50 p-2 text-green-500 font-bold cursor-pointer">Interview</button>
                 <button class="rejecting-btn border-red-400 border bg-amber-50 p-2 text-red-500 font-bold cursor-pointer">Rejected</button>
-            </div> 
-        </div>
-        `
-        filterSection.appendChild(div)
+            </div>
+        `;
+
+        filterSection.appendChild(div);
     }
 }
+ function renderEmptyState(message){
+
+    filterSection.innerHTML = `
+     <div class="bg-gray-100 rounded-2xl p-16 text-center">
+         <div class="text-6xl text-blue-500 mb-4">
+             <i class="fa-solid fa-file-lines"></i>
+         </div>
+         <h2 class="text-2xl font-bold mb-2">${message}</h2>
+         <p class="text-gray-500">Check back soon for new job opportunities</p>
+     </div>
+     `;
+ }
+
 
 const deleteButtons = document.querySelectorAll(".delete-btn");
 
